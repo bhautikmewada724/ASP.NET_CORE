@@ -1,0 +1,79 @@
+﻿@using System.Data
+@{
+    ViewData["Title"] = "City List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<CityModel>
+
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>City</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="City" asp-action="CityListPage">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">City List</li>
+            </ol>
+        </nav>
+        <div class="d-flex justify-content-end align-items-center">
+            <a class="btn btn-outline-primary" asp-controller="City" asp-action="CityAddEdit">
+                <i class="bi bi-plus-lg"></i>&nbsp;Add City
+            </a>
+        </div>
+    </div><!-- End Page Title -->
+    @if (TempData["CityInsertMsg"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["CityInsertMsg"]
+        </div>
+    }
+
+    <div class="mb-3">
+        <input type="text" class="form-control" id="citySearch" placeholder="Search Any">
+    </div>
+
+    <table class="table table-hover table-header-fixed">
+        <thead>
+            <tr>
+                <th scope="col">City Name</th>
+                <th scope="col">City Code</th>
+                <th scope="col">State Name</th>
+                <th scope="col">Country Name</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        </thead>
+        <tbody id="cityTable">
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.CityName</td>
+                    <td>@i.CityCode</td>
+                    <td>@i.StateName</td>
+                    <td>@i.CountryName</td>
+                    <td class="text-center">
+                        <a class="btn btn-outline-success btn-xs" asp-controller="City" asp-action="CityAddEdit">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <form asp-action="Delete"
+                              asp-route-CityID="@i.CityID"
+                              method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+

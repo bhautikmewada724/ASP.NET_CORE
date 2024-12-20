@@ -1,0 +1,125 @@
+﻿@model Nice_Admin_Backened.Models.CustomerModel
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Customer Add/Edit Form</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bill Add/Edit Form</h5>
+
+                        <!-- Customer Form Elements -->
+                        <form asp-controller="Customers" asp-action="CustomerSave">
+                            <input type="hidden" asp-for="CustomerID" />
+
+                            <!-- CustomerName -->
+                            <div class="mb-3 row">
+                                <label for="inputCustomerName" class="col-sm-3 col-form-label">Customer Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="CustomerName" class="form-control" id="inputCustomerName" placeholder="Enter Customer Name">
+                                    <span asp-validation-for="CustomerName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- HomeAddress -->
+                            <div class="mb-3 row">
+                                <label for="inputHomeAddress" class="col-sm-3 col-form-label">Home Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="HomeAddress" class="form-control" id="inputHomeAddress" placeholder="Enter Home Address">
+                                    <span asp-validation-for="HomeAddress" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3 row">
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" asp-for="Email" class="form-control" id="inputEmail" placeholder="Enter Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- MobileNo -->
+                            <div class="mb-3 row">
+                                <label for="inputMobileNo" class="col-sm-3 col-form-label">Mobile No</label>
+                                <div class="col-sm-9">
+                                    <input type="tel" asp-for="MobileNo" class="form-control" id="inputMobileNo" placeholder="Enter Mobile No">
+                                    <span asp-validation-for="MobileNo" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- GSTNo -->
+                            <div class="mb-3 row">
+                                <label for="inputGSTNo" class="col-sm-3 col-form-label">GST No</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="GSTNo" class="form-control" id="inputGSTNo" placeholder="Enter GST No">
+                                    <span asp-validation-for="GSTNo" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- CityName -->
+                            <div class="mb-3 row">
+                                <label for="inputCityName" class="col-sm-3 col-form-label">City Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="CityName" class="form-control" id="inputCityName" placeholder="Enter City Name">
+                                    <span asp-validation-for="CityName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Pincode -->
+                            <div class="mb-3 row">
+                                <label for="inputPincode" class="col-sm-3 col-form-label">Pincode</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="Pincode" class="form-control" id="inputPincode" placeholder="Enter Pincode">
+                                    <span asp-validation-for="Pincode" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- NetAmount -->
+                            <div class="mb-3 row">
+                                <label for="inputNetAmount" class="col-sm-3 col-form-label">Net Amount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="NetAmount" class="form-control" id="inputNetAmount" placeholder="Enter Net Amount">
+                                    <span asp-validation-for="NetAmount" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- UserID -->
+                            <div class="mb-3 row">
+                                <label for="inputUserId" class="col-sm-3 col-form-label">User ID</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="inputUserId" asp-for="UserID" asp-items="@(new SelectList(ViewBag.UserList, "UserID", "UserName"))">
+                                        <option value="">Select User ID</option>
+                                    </select>
+                                    <span asp-validation-for="UserID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form><!-- End Customer Form Elements -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main><!-- End #main -->
+@section Scripts {
+    @{
+        Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

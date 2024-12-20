@@ -1,0 +1,135 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Nice_Admin_Backened
+build_property.RootNamespace = Nice_Admin_Backened
+build_property.ProjectDir = C:\Users\91931\source\repos\Nice_Admin_Backened\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\91931\source\repos\Nice_Admin_Backened
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Bills/BillAddEditForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlsbHNcQmlsbEFkZEVkaXRGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Bills/BillsListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlsbHNcQmlsbHNMaXN0UGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/City/CityAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0eVxDaXR5QWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/City/CityListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0eVxDaXR5TGlzdFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Country/CountryAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxDb3VudHJ5QWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Country/CountryListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxDb3VudHJ5TGlzdFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Customers/CustomerAddEditForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEN1c3RvbWVyQWRkRWRpdEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Customers/CustomerListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEN1c3RvbWVyTGlzdFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/OrderDetail/OrderDetailAddEditForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJEZXRhaWxcT3JkZXJEZXRhaWxBZGRFZGl0Rm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/OrderDetail/OrderDetailsListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJEZXRhaWxcT3JkZXJEZXRhaWxzTGlzdFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Order/OrderAddEditForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJBZGRFZGl0Rm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Order/OrderListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJMaXN0UGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Product/ProductAddEditForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0QWRkRWRpdEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Product/ProductsListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0c0xpc3RQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Shared/_Layout_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Shared/_Layout_Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/State/StateAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGVcU3RhdGVBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/State/StateListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGVcU3RhdGVMaXN0UGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/UserLogin/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckxvZ2luXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/UserLogin/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckxvZ2luXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/User/UserAddEditForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQWRkRWRpdEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/User/UsersListPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2Vyc0xpc3RQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/91931/source/repos/Nice_Admin_Backened/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-8tiu0uvqo0

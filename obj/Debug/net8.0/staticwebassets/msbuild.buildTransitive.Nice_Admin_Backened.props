@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Nice_Admin_Backened.props" />
+</Project>

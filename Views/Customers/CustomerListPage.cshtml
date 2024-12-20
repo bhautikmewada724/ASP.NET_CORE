@@ -1,0 +1,70 @@
+﻿@using System.Data
+@model System.Data.DataTable
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Product</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house-door"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Customer List</a>
+                </li>
+            </ol>
+        </nav>
+        <div class="d-flex justify-content-end align-items-center">
+            <div>
+                <a class="btn btn-outline-primary" asp-controller="Customers" asp-action="CustomerAddEditForm"><i class="bi bi-plus-lg"></i>&nbsp;Add Customer</a>
+            </div>
+        </div>
+    </div><!-- End Page Title -->
+
+    <table class="table table-hover table-header-fixed">
+        <thead>
+            <tr>
+                <th scope="col">CustomerID</th>
+                <th scope="col">CustomerName</th>
+                <th class="col">HomeAddress</th>
+                <th class="col">Email</th>
+                <th class="col">MobileNo</th>
+                <th class="col">GSTNo</th>
+                <th class="text-center">CityName</th>
+                <th class="text-center">Pincode</th>
+                <th class="text-center">NetAmount</th>
+                <th class="text-center">UserID</th>
+
+            </tr>
+        </thead>
+        <tbody id="sample_2">
+            <span class="text-danger">@TempData["ErrorMessage"]</span>
+            @foreach (DataRow dataRow in Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["CustomerID"]</td>
+                    <td>@dataRow["CustomerName"]</td>
+                    <td>@dataRow["HomeAddress"]</td>
+                    <td>@dataRow["Email"]</td>
+                    <td>@dataRow["MobileNo"]</td>
+                    <td>@dataRow["GSTNo"]</td>
+                    <td>@dataRow["CityName"]</td>
+                    <td>@dataRow["Pincode"]</td>
+                    <td>@dataRow["NetAmount"]</td>
+                    <td>@dataRow["UserID"]</td>
+                    <td class="text-center">
+                        <a class="btn btn-outline-success btn-xs" asp-controller="Customers" asp-action="CustomerAddEditForm" asp-route-CustomerID="@dataRow["CustomerID"]">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <a href="/Customers/CustomerDelete?CustomerID=@dataRow["CustomerID"]" class="btn btn-outline-danger btn-xs">
+                            <i class="bi bi-x"></i>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Nice_Admin_Backened.props" />
+</Project>

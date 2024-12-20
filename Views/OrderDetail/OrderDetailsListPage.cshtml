@@ -1,0 +1,63 @@
+﻿@using System.Data
+@model System.Data.DataTable
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Product</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house-door"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Order List</a>
+                </li>
+            </ol>
+        </nav>
+        <div class="d-flex justify-content-end align-items-center">
+            <div>
+                <a class="btn btn-outline-primary" asp-controller="OrderDetail" asp-action="OrderDetailAddEditForm"><i class="bi bi-plus-lg"></i>&nbsp;Add OrderDetail</a>
+            </div>
+        </div>
+    </div><!-- End Page Title -->
+
+    <table class="table table-hover table-header-fixed">
+        <thead>
+            <tr>
+                <th scope="col">OrderDetailId</th>
+                <th scope="col">OrderId</th>
+                <th class="col">ProductId</th>
+                <th class="col">Quantity</th>
+                <th class="col">Amount</th>
+                <th class="col">TotalAmount</th>
+                <th class="text-center">UserID</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="sample_2">
+            <span class="text-danger">@TempData["ErrorMessage"]</span>
+            @foreach (DataRow dataRow in Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["OrderDetailId"]</td>
+                    <td>@dataRow["OrderId"]</td>
+                    <td>@dataRow["ProductId"]</td>
+                    <td>@dataRow["Quantity"]</td>
+                    <td>@dataRow["Amount"]</td>
+                    <td>@dataRow["TotalAmount"]</td>
+                    <td>@dataRow["UserID"]</td>
+                    <td class="text-center">
+                        <a class="btn btn-outline-success btn-xs" asp-controller="OrderDetail" asp-action="OrderDetailAddEditForm" asp-route-OrderDetailID="@dataRow["OrderDetailID"]">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <a href="/OrderDetail/OrderDetailDelete?OrderDetailID=@dataRow["OrderDetailID"]" class="btn btn-outline-danger btn-xs">
+                            <i class="bi bi-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

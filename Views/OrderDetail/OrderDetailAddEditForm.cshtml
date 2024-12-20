@@ -1,0 +1,99 @@
+﻿@model Nice_Admin_Backened.Models.OrderDetailModel
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">OrderDetail Add/Edit Form</h5>
+
+                        <!-- Product Form Elements -->
+                        <form asp-controller="OrderDetail" asp-action="OrderDetailSave">
+                            <input type="hidden" asp-for="OrderDetailID" />
+                            <div class="row mb-3">
+                                <label for="inputOrderId" class="col-sm-3 col-form-label">OrderId</label>
+                                <div class="row mb-3">
+                                    <div class="col-sm-8">
+                                        <select class="form-control" asp-for="OrderID" asp-items="@(new SelectList(ViewBag.OrderList, "OrderID", "OrderID"))">
+                                            <option value="">Select Order</option>
+                                        </select>
+                                        <span asp-validation-for="OrderID" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputProductPrice" class="col-sm-3 col-form-label">Product Quantity</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="Quantity" class="form-control" id="inputQuantity" placeholder="Enter Quantity">
+                                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputProductCode" class="col-sm-3 col-form-label">Amount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="Amount" class="form-control" id="inputAmount" placeholder="Enter Amount">
+                                    <span asp-validation-for="Amount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputDescription" class="col-sm-3 col-form-label">Total Amount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="TotalAmount" class="form-control" id="inputTotalAmount" placeholder="Enter Total Amount">
+                                    <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputUserId" class="col-sm-3 col-form-label">ProductId</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="inputProductId" asp-for="ProductID" asp-items="@(new SelectList(ViewBag.ProductList, "ProductID", "ProductName"))">
+                                        <option value="">Select ProductId</option>
+                                    </select>
+                                    <span asp-validation-for="ProductID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputUserId" class="col-sm-3 col-form-label">UserId</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="inputUserId" asp-for="UserID" asp-items="@(new SelectList(ViewBag.UserList, "UserID", "UserName"))">
+                                        <option value="">Select UserId</option>
+                                    </select>
+                                    <span asp-validation-for="UserID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form><!-- End Product Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+@section Scripts {
+    @{
+        Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

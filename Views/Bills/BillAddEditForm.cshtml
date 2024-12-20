@@ -1,0 +1,102 @@
+﻿@model Nice_Admin_Backened.Models.BillsModel
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bill Add/Edit Form</h5>
+
+                        <!-- Product Form Elements -->
+                        <form asp-controller="Bills" asp-action="BillSave">
+                             <input type="hidden" asp-for="BillID" />
+
+                            <div class="mb-3 row">
+                                <label for="inputBillNumber" class="col-sm-3 col-form-label">BillNumber</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="BillNumber" class="form-control" id="inputBillNumber" placeholder="Enter BillNumber">
+                                    <span asp-validation-for="BillNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputBillDate" class="col-sm-3 col-form-label">BillDate</label>
+                                <div class="col-sm-9">
+                                    <input type="datetime" asp-for="BillDate" class="form-control" id="inputBillDate" placeholder="Enter BillDate">
+                                    <span asp-validation-for="BillDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputProductCode" class="col-sm-3 col-form-label">TotalAmount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="TotalAmount" class="form-control" id="inputTotalAmount" placeholder="Enter TotalAmount">
+                                    <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputDiscount" class="col-sm-3 col-form-label">Discount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="Discount" class="form-control" id="inputTotalAmount" placeholder="Enter Discount">
+                                    <span asp-validation-for="Discount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputDiscount" class="col-sm-3 col-form-label">NetAmount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="NetAmount" class="form-control" id="inputDiscount" placeholder="Enter NetAmount">
+                                    <span asp-validation-for="NetAmount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputOrderID" class="col-sm-3 col-form-label">OrderID</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="inputOrderID" asp-for="OrderID" asp-items="@(new SelectList(ViewBag.OrderList, "OrderID", "OrderID"))">
+                                        <option value="">Select OrderID</option>
+                                    </select>
+                                    <span asp-validation-for="OrderID" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputUserId" class="col-sm-3 col-form-label">UserId</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="inputUserId" asp-for="UserID" asp-items="@(new SelectList(ViewBag.UserList, "UserID", "UserName"))">
+                                        <option value="">Select UserId</option>
+                                    </select>
+                                    <span asp-validation-for="UserID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form><!-- End Product Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+@section Scripts {
+    @{
+        Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

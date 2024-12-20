@@ -1,0 +1,80 @@
+﻿@using System.Data
+@model System.Data.DataTable
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Product</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house-door"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Product List</a>
+                </li>
+            </ol>
+        </nav>
+        <div class="d-flex justify-content-end align-items-center">
+            <div>
+                <a class="btn btn-outline-primary" asp-controller="Product" asp-action="ProductAddEditForm"><i class="bi bi-plus-lg"></i>&nbsp;Add Product</a>
+            </div>
+        </div>
+    </div><!-- End Page Title -->
+
+    <table class="table table-hover table-header-fixed">
+        <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th class="col">Product Code</th>
+                <th class="col">Product Price</th>
+                <th class="col">Description</th>
+                <th class="col">User ID</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody id="sample_2">
+            <span class="text-danger">@TempData["ErrorMessage"]</span>
+            @foreach (DataRow dataRow in Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["ProductID"]</td>
+                    <td>@dataRow["ProductName"]</td>
+                    <td>@dataRow["ProductCode"]</td>
+                    <td>@dataRow["ProductPrice"]</td>
+                    <td>@dataRow["Description"]</td>
+                    <td>@dataRow["UserID"]</td>
+                    <td class="text-center">
+                        <a class="btn btn-outline-success btn-xs" asp-controller="Product" asp-action="ProductAddEditForm" asp-route-ProductID=@dataRow["ProductID"]>
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <!-- Delete Button with SweetAlert -->
+                        <a href="javascript:void(0)" onclick="confirmDelete('@Url.Action("ProductDelete", "Product", new { ProductID = dataRow["ProductID"] })')" class="btn btn-outline-danger btn-xs">
+                            <i class="bi bi-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>
+
+<script>
+    function confirmDelete(deleteUrl) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = deleteUrl; // Redirect to the delete URL if confirmed
+            }
+        });
+    }
+</script>

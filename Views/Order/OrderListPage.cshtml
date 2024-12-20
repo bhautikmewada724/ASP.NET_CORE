@@ -1,0 +1,81 @@
+﻿@using System.Data
+@model System.Data.DataTable
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Product</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house-door"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Order List</a>
+                </li>
+            </ol>
+        </nav>
+        <div class="d-flex justify-content-end align-items-center">
+            <div>
+                <a class="btn btn-outline-primary" asp-controller="Order" asp-action="OrderAddEditForm"><i class="bi bi-plus-lg"></i>&nbsp;Add Order</a>
+            </div>
+        </div>
+    </div><!-- End Page Title -->
+
+    <table class="table table-hover table-header-fixed">
+        <thead>
+            <tr>
+                <th scope="col">OrderId</th>
+                <th scope="col">OrderDate</th>
+                <th class="col">PaymentMode</th>
+                <th class="col">TotalAmount</th>
+                <th class="col">Shipping Address</th>
+                <th class="col">UserID</th>
+                <th class="text-center">CustomerId</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="sample_2">
+            <span class="text-danger">@TempData["ErrorMessage"]</span>
+            @foreach (DataRow dataRow in Model.Rows)
+            {
+                <tr>
+                    <td>@dataRow["OrderId"]</td>
+                    <td>@dataRow["OrderDate"]</td>
+                    <td>@dataRow["PaymentMode"]</td>
+                    <td>@dataRow["TotalAmount"]</td>
+                    <td>@dataRow["ShippingAddress"]</td>
+                    <td>@dataRow["UserID"]</td>
+                    <td>@dataRow["CustomerId"]</td>
+                    <td class="text-center">
+                        <a class="btn btn-outline-success btn-xs" asp-controller="Order" asp-action="OrderAddEditForm" asp-route-OrderId="@dataRow["OrderId"]">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="btn btn-outline-danger btn-xs" onclick="confirmDelete('@dataRow["OrderID"]')">
+                            <i class="bi bi-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>
+
+<script>
+    function confirmDelete(orderId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/Order/OrderDelete?OrderID=' + orderId;
+            }
+        })
+    }
+</script>

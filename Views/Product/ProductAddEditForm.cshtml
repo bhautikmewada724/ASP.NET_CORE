@@ -1,0 +1,132 @@
+﻿@model Nice_Admin_Backened.Models.ProductModel
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Add/Edit Form</h5>
+
+                        <!-- Product Form Elements -->
+                        <form id="productForm" asp-controller="Product" asp-action="ProductSave" method="post">
+
+                            <input type="hidden" asp-for="ProductID" />
+
+                            <div class="mb-3 row">
+                                <label for="inputProductName" class="col-sm-3 col-form-label">Product Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="ProductName" class="form-control" id="inputProductName" placeholder="Enter Product Name">
+                                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputProductPrice" class="col-sm-3 col-form-label">Product Price</label>
+                                <div class="col-sm-9">
+                                    <input type="number" asp-for="ProductPrice" class="form-control" id="inputProductPrice" placeholder="Enter Product Price">
+                                    <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputProductCode" class="col-sm-3 col-form-label">Product Code</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="ProductCode" class="form-control" id="inputProductCode" placeholder="Enter Product Code">
+                                    <span asp-validation-for="ProductCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputDescription" class="col-sm-3 col-form-label">Description</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="Description" class="form-control" id="inputDescription" placeholder="Enter Description">
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputUserId" class="col-sm-3 col-form-label">Username</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="inputUserId" asp-for="UserID" asp-items="@(new SelectList(ViewBag.UserList, "UserID", "UserName"))">
+                                        <option value="">Select Username</option>
+                                    </select>
+                                    <span asp-validation-for="UserID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form><!-- End Product Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+@section Scripts {
+    @{
+        Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('productForm');
+            const resetButton = form.querySelector('button[type="reset"]');
+
+            // Handle form submission
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You want to save or update this product!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, save it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit(); // Submit the form if confirmed
+                    }
+                });
+            });
+
+            // Handle form reset
+            resetButton.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default form reset
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'All unsaved changes will be lost!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, reset it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.reset(); // Reset the form if confirmed
+                    }
+                });
+            });
+        });
+    </script>
+}

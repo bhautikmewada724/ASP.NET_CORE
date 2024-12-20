@@ -1,0 +1,76 @@
+﻿@model Nice_Admin_Backened.Models.StateModel
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">State Add/Edit Form</h5>
+                        <form asp-controller="State" asp-action="StateSave">
+                            <input type="hidden" asp-for="StateID" />
+                            <div class="mb-3 row">
+                                <label for="inputStateName" class="col-sm-3 col-form-label">StateName</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="StateName" class="form-control" id="inputStateName" placeholder="Enter StateName">
+                                    <span asp-validation-for="StateName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputCityCode" class="col-sm-3 col-form-label">StateCode</label>
+                                <div class="col-sm-9">
+                                    <input type="text" asp-for="StateCode" class="form-control" id="inputStateCode" placeholder="Enter StateCode">
+                                    <span asp-validation-for="StateCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="CountryID" class="col-md-3 control-label"><span class="text-danger">*</span>Country Name</label>
+                                <div class="col-md-9">
+                                    <select id="CountryID"
+                                            name="CountryID"
+                                            class="form-control"
+                                            asp-for="CountryID">
+                                        <option value="">Select Country</option>
+                                        @foreach (var country in ViewBag.CountryList)
+                                        {
+                                            <option value="@country.CountryID">
+                                                @country.CountryName
+                                            </option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="CountryID" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
