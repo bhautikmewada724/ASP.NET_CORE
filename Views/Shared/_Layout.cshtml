@@ -47,7 +47,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
                 <img src="~/img/logo.png" alt="">
                 <span class="d-none d-lg-block">NiceAdmin</span>
             </a>
@@ -396,17 +396,17 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a asp-controller="Country" asp-action="GetAllCountries">
+                        <a asp-controller="Country" asp-action="CountryListPage">
                             <i class="bi bi-circle"></i><span>Country Table</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="State" asp-action="GetAllStates">
+                        <a asp-controller="State" asp-action="StateListPage">
                             <i class="bi bi-circle"></i><span>State Table</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="city" asp-action="GetAllCities">
+                        <a asp-controller="City" asp-action="CityListPage">
                             <i class="bi bi-circle"></i><span>City table</span>
                         </a>
                     </li>

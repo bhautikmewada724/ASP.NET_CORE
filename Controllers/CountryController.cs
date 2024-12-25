@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using Nice_Admin_Backened.Models;
@@ -22,7 +22,7 @@ namespace Nice_Admin_Backened.Controllers
         }
         #endregion
 
-        #region CountryListPage
+        #region CountryListPage 
         public IActionResult CountryListPage()
         {
             string connectionString = this._configuration.GetConnectionString("ConnectionString");
@@ -86,60 +86,46 @@ namespace Nice_Admin_Backened.Controllers
         [HttpPost]
         public IActionResult CountrySave(CountryModel countryModel)
         {
-            if (countryModel.CountryID <= 0)
+            // Validate the CountryID to ensure it's provided
+            if (countryModel.CountryID <= 0 && string.IsNullOrWhiteSpace(countryModel.CountryName))
             {
-                ModelState.AddModelError("CountryID", "A valid CityID is required.");
+                ModelState.AddModelError("CountryID", "A valid CountryID is required.");
+                ModelState.AddModelError("CountryName", "Country Name is required.");
             }
 
             if (ModelState.IsValid)
             {
                 string connectionString = this._configuration.GetConnectionString("ConnectionString");
-                SqlConnection connection = new SqlConnection(connectionString);
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                if (countryModel.CountryID == null)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.CommandText = "PR_LOC_Country_Insert";
+                    connection.Open();
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    if (countryModel.CountryID <= 0 || countryModel.CountryID == null ) // Insert case
+                    {
+                        command.CommandText = "PR_LOC_Country_Insert";
+                        command.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+
+                    }
+                    else // Update case
+                    {
+                        command.CommandText = "PR_LOC_Country_Update";
+                        command.Parameters.Add("@CountryID", SqlDbType.Int).Value = countryModel.CountryID;
+                        command.Parameters.Add("@ModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
+
+                    }
+
+                    command.Parameters.Add("@CountryName", SqlDbType.NVarChar).Value = countryModel.CountryName;
+                    command.Parameters.Add("@CountryCode", SqlDbType.NVarChar).Value = countryModel.CountryCode;
+
+                    command.ExecuteNonQuery();
                 }
-                else
-                {
-                    command.CommandText = "PR_LOC_Country_Update";
-                    command.Parameters.Add("@CountryID", SqlDbType.Int).Value = countryModel.CountryID;
-                }
-                command.Parameters.Add("@CountryName", SqlDbType.VarChar).Value = countryModel.CountryName;
-                command.Parameters.Add("@CountryCode", SqlDbType.VarChar).Value = countryModel.CountryCode;
-                command.ExecuteNonQuery();
                 return RedirectToAction("CountryListPage");
             }
             return View("CountryAddEdit", countryModel);
         }
         #endregion
 
-        #region CounsumingCountryApi
-
-        private readonly Uri baseAddress = new Uri("https://localhost:7077/api");
-        private readonly HttpClient _client;
-
-        [ActivatorUtilitiesConstructor]
-        public CountryController()
-        {
-            _client = new HttpClient();
-            _client.BaseAddress = baseAddress;
-        }
-
-        [HttpGet]
-        public IActionResult GetAllCountries()
-        {
-            List<CountryModel> countries = new List<CountryModel>();
-            HttpResponseMessage response = _client.GetAsync($"{_client.BaseAddress}/Country").Result;
-
-            if (response.IsSuccessStatusCode) { 
-                string data = response.Content.ReadAsStringAsync().Result;
-                countries = JsonConvert.DeserializeObject<List<CountryModel>>(data);
-            }
-            return View("CountryListPage", countries);
-        }
-        #endregion
     }
 }

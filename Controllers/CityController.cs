@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data;
 using Nice_Admin_Backened.Models;
 using Newtonsoft.Json;
@@ -206,109 +206,5 @@ namespace Nice_Admin_Backened.Controllers
         }
         #endregion
 
-        #region CounsumingCityApi
-
-        private readonly Uri baseAddress = new Uri("https://localhost:7077/api");
-        private readonly HttpClient _client;
-
-        [ActivatorUtilitiesConstructor]
-        public CityController()
-        {
-            _client = new HttpClient();
-            _client.BaseAddress = baseAddress;
-        }
-
-        #region GetAllCities
-        [HttpGet]
-        public IActionResult GetAllCities()
-        {
-            List<CityModel> cities = new List<CityModel>();
-            HttpResponseMessage response = _client.GetAsync($"{_client.BaseAddress}/City").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                cities = JsonConvert.DeserializeObject<List<CityModel>>(data);
-            }
-            return View("CityListPage", cities);
-        }
-        #endregion
-
-        #region InsertCity
-        public async Task<IActionResult> Add(int? CityID)
-        {
-            await GetCountryList();
-            if (CityID.HasValue)
-            {
-                var response = await _client.GetAsync($"api/city/{CityID}");
-                if (response.IsSuccessStatusCode)
-                {
-                    var data = await response.Content.ReadAsStringAsync();
-                    var city = JsonConvert.DeserializeObject<CityModel>(data);
-                    ViewBag.StateList = await GetStates(city.CountryID);
-                    return View(city);
-                }
-            }
-            return View(new CityModel());
-        }
-        #endregion
-
-        #region SaveCity
-        [HttpPost]
-        public async Task<IActionResult> Save(CityModel city)
-        {
-            if (ModelState.IsValid)
-            {
-                var json = JsonConvert.SerializeObject(city);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response;
-
-                if (city.CityID == null)
-                    response = await _client.PostAsync("api/city", content);
-                else
-                    response = await _client.PutAsync($"api/city/{city.CityID}", content);
-
-                if (response.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
-            }
-            await GetCountryList();
-            return View("Add", city);
-        }
-        #endregion
-
-        #region LoadCountryList
-        private async Task GetCountryList()
-        {
-            var response = await _client.GetAsync("api/city/countries");
-            if (response.IsSuccessStatusCode)
-            {
-                var data = await response.Content.ReadAsStringAsync();
-                var countries = JsonConvert.DeserializeObject<List<CountryDropDownModel>>(data);
-                ViewBag.CountryList = countries;
-            }
-        }
-        #endregion
-
-        #region GetStates
-        [HttpPost]
-        public async Task<JsonResult> GetStates(int CountryID)
-        {
-            var states = await GetStates(CountryID);
-            return Json(states);
-        }
-        #endregion
-
-        #region DeleteCity
-        
-        public async Task<IActionResult> Delete(int CityID)
-        {
-            var response = await _client.DeleteAsync($"api/City/{CityID}");
-            return RedirectToAction("CityListPage");
-        }
-        #endregion
-
-
-        #endregion
     }
 }
-

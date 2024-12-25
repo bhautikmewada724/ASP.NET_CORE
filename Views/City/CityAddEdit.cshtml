@@ -1,4 +1,4 @@
-﻿@model Nice_Admin_Backened.Models.CityModel
+﻿@model CityModel
 
 
 <main id="main" class="main">
@@ -102,37 +102,37 @@
         Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-       $(document).ready(function () {
-           $("#CountryID").change(function () {
-               var countryId = $(this).val();
-               if (countryId) {
-                   $.ajax({
-                       url: '@Url.Action("GetStatesByCountry", "City")',
-                       type: "POST", // Changed to POST
-                       data: { CountryID: countryId }, // Use 'CountryID' to match controller
-                       success: function (data) {
-                           $("#StateID")
-                               .empty()
-                               .append('<option value="">Select State</option>');
-                           $.each(data, function (i, state) {
-                               $("#StateID").append(
-                                   '<option value="' +
-                                   state.stateID +
-                                   '">' +
-                                   state.stateName +
-                                   "</option>"
-                               );
-                           });
-                           console.log(state.stateID);
-                       },
-                       error: function (xhr, status, error) {
-                           console.error(error);
-                       },
-                   });
-               } else {
-                   $("#StateID").empty().append('<option value="">Select State</option>');
-               }
-           });
-       });
-   </script>
+        $(document).ready(function () {
+            $("#CountryID").change(function () {
+                var countryId = $(this).val();
+                if (countryId) {
+                    $.ajax({
+                        url: '@Url.Action("GetStatesByCountry", "City")',
+                        type: "POST", // Changed to POST
+                        data: { CountryID: countryId }, // Use 'CountryID' to match controller
+                        success: function (data) {
+                            $("#StateID")
+                                .empty()
+                                .append('<option value="">Select State</option>');
+                            $.each(data, function (i, state) {
+                                $("#StateID").append(
+                                    '<option value="' +
+                                    state.stateID +
+                                    '">' +
+                                    state.stateName +
+                                    "</option>"
+                                );
+                            });
+                            console.log(state.stateID);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(error);
+                        },
+                    });
+                } else {
+                    $("#StateID").empty().append('<option value="">Select State</option>');
+                }
+            });
+        });
+    </script>
 }

@@ -14,11 +14,13 @@ namespace Nice_Admin_Backened.Models
         [Required]
         public int CountryID { get; set; }
 
+        [Required]
         public string CountryName { get; set; }
 
         [Required]
         public int StateID { get; set; }
 
+        [Required]
         public string StateName { get; set; }
 
         [Required]

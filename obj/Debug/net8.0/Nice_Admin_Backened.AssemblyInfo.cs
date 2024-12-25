@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nice_Admin_Backened")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4d57696c64aed1120f28c01abf88d28ba6e28bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nice_Admin_Backened")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nice_Admin_Backened")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

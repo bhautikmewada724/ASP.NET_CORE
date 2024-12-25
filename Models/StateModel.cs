@@ -12,9 +12,12 @@ namespace Nice_Admin_Backened.Models
         public string StateCode { get; set; }
         [Required]
         public int CountryID { get; set; }
-
+        [Required]
         public string CountryName { get; set; }
+
+        [Required]
         public DateTime Created { get; set; }
+        [Required]
         public DateTime Modified { get; set; }
 
     }

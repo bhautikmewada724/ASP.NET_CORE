@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data;
 using Nice_Admin_Backened.Models;
-using Newtonsoft.Json;
 
 namespace Nice_Admin_Backened.Controllers
 {
@@ -148,36 +147,6 @@ namespace Nice_Admin_Backened.Controllers
             LoadCountryList();
             return View("StateAddEdit", stateModel);
         }
-        #endregion
-
-        #region CounsumingStateApi
-
-        private readonly Uri baseAddress = new Uri("https://localhost:7077/api");
-        private readonly HttpClient _client;
-
-        [ActivatorUtilitiesConstructor]
-        public StateController()
-        {
-            _client = new HttpClient();
-            _client.BaseAddress = baseAddress;
-        }
-
-        #region GetAllStates
-        [HttpGet]
-        public IActionResult GetAllStates()
-        {
-            List<StateModel> states = new List<StateModel>();
-            HttpResponseMessage response = _client.GetAsync($"{_client.BaseAddress}/State").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                states = JsonConvert.DeserializeObject<List<StateModel>>(data);
-            }
-            return View("StateListPage", states);
-        }
-        #endregion
-
         #endregion
     }
 }
